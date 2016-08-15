@@ -11,5 +11,33 @@
 
 ;;; Code:
 
+;;* Customization
+(defgroup indie-buffers nil
+  "Narrowed indirect buffers."
+  :group 'convenience
+  :prefix "indie-buffers-")
+
+
+(defcustom indie-buffers-name-format
+  "*indie: %s*"
+  "Name format the indie buffers follow."
+  :group 'indie-buffers)
+
+
+(defun indie-buffers-create (base-buffer name start end)
+  "Create an indirect buffer from BASE-BUFFER and named NAME."
+  (let* ((buffer-name (format "*indie: %s*" name))
+         (buffer (make-indirect-buffer base-buffer buffer-name :clone)))
+    (with-current-buffer buffer
+      (narrow-to-region start end))
+    buffer))
+
+;;;###autoload
+(defun indie-buffers-region (start end name)
+  "Create an indirect buffer from the active region."
+  (interactive "r\nMName: ")
+  (switch-to-buffer
+   (indie-buffers-create (current-buffer) name start end)))
+
 (provide 'indie-buffers)
 ;;; indie-buffers.el ends here
