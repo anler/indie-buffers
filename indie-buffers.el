@@ -1,11 +1,26 @@
 ;;; indie-buffers.el --- Narrowed indirect buffers -*- coding: utf-8; lexical-binding: t -*-
 
-;; This is free and unencumbered released into the public domain
-
 ;; Author: Anler Hernández Peral <inbox@anler.me>
 ;; Version: 0.1.0
 ;; Keywords: buffer, buffers, clone, indirect
 ;; URL: https://github.com/anler/indie-buffers
+;; Package-Requires: ((emacs "24"))
+;; Compatibility: GNU Emacs 24.x
+;;
+;; This file is NOT part of GNU Emacs.
+;;
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 2
+;; of the License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
