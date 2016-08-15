@@ -25,19 +25,37 @@
 
 
 (defun indie-buffers-create (base-buffer name start end)
-  "Create an indirect buffer from BASE-BUFFER and named NAME."
   (let* ((buffer-name (format "*indie: %s*" name))
          (buffer (make-indirect-buffer base-buffer buffer-name :clone)))
     (with-current-buffer buffer
       (narrow-to-region start end))
     buffer))
 
+
+(defun indie-buffers-region-with (buffer-handler start end name)
+  (funcall
+   buffer-handler
+   (indie-buffers-create (current-buffer) name start end)))
+
 ;;;###autoload
 (defun indie-buffers-region (start end name)
-  "Create an indirect buffer from the active region."
+  "Create an indie buffer with region START END and named NAME."
   (interactive "r\nMName: ")
-  (switch-to-buffer
-   (indie-buffers-create (current-buffer) name start end)))
+  (indie-buffers-region-with 'switch-to-buffer start end name))
+
+;;;###autoload
+(defun indie-buffers-region-other-window (start end name)
+  "Create an indie buffer with region START END and named NAME in
+other window."
+  (interactive "r\nMName: ")
+  (indie-buffers-region-with 'switch-to-buffer-other-window start end name))
+
+;;;###autoload
+(defun indie-buffers-region-other-frame (start end name)
+  "Create an indie buffer with region START END and named NAME in
+other frame."
+  (interactive "r\nMName: ")
+  (indie-buffers-region-with 'switch-to-buffer-other-frame start end name))
 
 (provide 'indie-buffers)
 ;;; indie-buffers.el ends here
