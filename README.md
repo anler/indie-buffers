@@ -33,8 +33,10 @@ Similarly you can create the buffer in another window or frame:
 
 ## Current TODO list
 
+- [x] Command for narrowing regions.
 - [ ] Command for narrowing *defun*s instead of regions.
 - [ ] Command for narrowing imenu definitions.
+- [ ] Command for generating buffers' names.
 - [ ] Correctly handle indentation in indirect buffers.
 - [ ] Command to easily navigate the indirect buffers of a main buffer.
 
